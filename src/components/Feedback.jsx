@@ -1,8 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
-import { Container, Row} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import Statistics from './Statistics';
 import FeedbackOptions from './FeedbackOptions';
+import Section from './Section';
 
 class Feedback extends Component {
   state = {
@@ -21,22 +22,22 @@ class Feedback extends Component {
     const total = this.state.good + this.state.neutral + this.state.bad;
     const positivePercentage = Math.round((this.state.good * 100) / total);
     return (
-      <Container>
-        <h2>Please leave feedback</h2>
-        <Row className="justify-content-center">
+      <Container className='p-5'>
+        <Section title="Please leave feedback">
           <FeedbackOptions
             options={['good', 'neutral', 'bad']}
             onLeaveFeedback={this.onLeaveFeedback}
           />
-        </Row>
-        <h2>Statistics</h2>
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={total}
-          positivePercentage={positivePercentage}
-        />
+        </Section>
+        <Section title="Statistics">
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={total}
+            positivePercentage={positivePercentage}
+          />
+        </Section>
       </Container>
     );
   }
