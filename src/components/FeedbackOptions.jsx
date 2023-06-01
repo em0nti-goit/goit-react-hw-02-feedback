@@ -4,7 +4,7 @@ import { ButtonGroup, Button } from 'react-bootstrap';
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <ButtonGroup className="btn-group-lg" onClick={onLeaveFeedback}>
+    <ButtonGroup className="btn-group-lg gap-1" onClick={onLeaveFeedback}>
       {options.map(option => {
         return (
           <Button
