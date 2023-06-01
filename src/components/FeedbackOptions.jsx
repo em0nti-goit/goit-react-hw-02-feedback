@@ -7,7 +7,12 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     <ButtonGroup className="btn-group-lg" onClick={onLeaveFeedback}>
       {options.map(option => {
         return (
-          <Button variant="light" data-option={option} key={option}>
+          <Button
+            variant="light"
+            onClick={() => onLeaveFeedback(option)}
+            key={option}
+            className={option}
+          >
             {option}
           </Button>
         );

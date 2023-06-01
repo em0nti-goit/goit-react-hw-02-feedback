@@ -11,25 +11,23 @@ class Feedback extends Component {
     bad: 0,
   };
 
-  handleBtnClick = e => {
-    if (e.target.dataset.option === 'good') {
-      this.setState(prevState => ({ good: prevState.good + 1 }));
-    } else if (e.target.dataset.option === 'neutral') {
-      this.setState(prevState => ({ neutral: prevState.neutral + 1 }));
-    } else if (e.target.dataset.option === 'bad') {
-      this.setState(prevState => ({ bad: prevState.bad + 1 }));
-    }
+  onLeaveFeedback = option => {
+    this.setState(prevState => {
+      return { [option]: prevState[option] + 1 };
+    });
   };
 
-  
   render() {
     const total = this.state.good + this.state.neutral + this.state.bad;
-    const positivePercentage=Math.round((this.state.good * 100) / total);
+    const positivePercentage = Math.round((this.state.good * 100) / total);
     return (
       <Container>
         <h2>Please leave feedback</h2>
         <Row className="justify-content-center">
-          <FeedbackOptions options={['good','neutral','bad']} onLeaveFeedback={this.handleBtnClick}/>
+          <FeedbackOptions
+            options={['good', 'neutral', 'bad']}
+            onLeaveFeedback={this.onLeaveFeedback}
+          />
         </Row>
         <h2>Statistics</h2>
         <Statistics

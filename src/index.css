@@ -13,3 +13,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.good {
+  border-color: green;
+}
+
+.bad {
+  border-color: red;
+}
+
+.neutral {
+  border-color: rgb(254, 229, 6);
+}
