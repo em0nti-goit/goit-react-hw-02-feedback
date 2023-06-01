@@ -30,7 +30,7 @@ const Statistics = ({
         </tr>
         <tr>
           <td className="fw-bold">Positive Feedback:</td>
-          <td>{positivePercentage ? positivePercentage + '%' : '0%'}</td>
+          <td>{positivePercentage}%</td>
         </tr>
       </tbody>
     </Table>

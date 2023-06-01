@@ -20,7 +20,9 @@ class Feedback extends Component {
 
   render() {
     const total = this.state.good + this.state.neutral + this.state.bad;
-    const positivePercentage = Math.round((this.state.good * 100) / total);
+    const positivePercentage =
+      total > 0 ? Math.round((this.state.good * 100) / total) : 0;
+
     return (
       <Container className='p-5'>
         <Section title="Please leave feedback">
