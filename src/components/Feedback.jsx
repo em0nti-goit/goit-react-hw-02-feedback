@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import Statistics from './Statistics';
 import FeedbackOptions from './FeedbackOptions';
 import Section from './Section';
+import Notification from './Notification';
 
 class Feedback extends Component {
   state = {
@@ -24,7 +25,7 @@ class Feedback extends Component {
       total > 0 ? Math.round((this.state.good * 100) / total) : 0;
 
     return (
-      <Container className='p-5'>
+      <Container className="p-5">
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={Object.keys(this.state)}
@@ -32,13 +33,17 @@ class Feedback extends Component {
           />
         </Section>
         <Section title="Statistics">
-          <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
-            total={total}
-            positivePercentage={positivePercentage}
-          />
+          {total > 0 ? (
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            />
+          ) : (
+            <Notification message="There is no feedback given" />
+          )}
         </Section>
       </Container>
     );
